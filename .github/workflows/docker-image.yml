@@ -7,14 +7,13 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    with:
-      context: docker
+    - uses: actions/checkout@v2 # Updated to use the v2 version
+
+    - name: Run commands and build the Docker image
+      run: |
+        cd docker# Replace with your directory
+        docker build . --file Dockerfile --tag my-image-name:$(date +%s)
